@@ -1,0 +1,28 @@
+# Nova login username
+OS_USERNAME=admin
+
+# Nova login password
+OS_PASSWORD=admin
+
+# OpenStack tenant name
+OS_TENANT_NAME=admin
+
+# Keystone auth url
+OS_AUTH_URL=http://172.30.1.56:5000/v2.0/
+
+# OpenStack Region name
+OS_REGION_NAME=serverstack
+
+# Hostname of the compute node reserved for evacuation
+#For N+1 model the format is: EVACUATION_TARGET=node1
+#For N+M model the format is: EVACUATION_TARGET="node1 node2 node3"
+#For N-to-N model the format is: EVACUATION_TARGET=
+#EVACUATION_TARGET="Compute2-b1 Compute3-Fred"
+EVACUATION_TARGET=Compute3-Fred
+
+# List of Compute node in the cluster (Hostnames)
+# Format is COMPUTE_NODES="node1 node2 node3"
+# node1 ipmi-ip ipmi-username ipmi-password
+COMPUTE_NODES="Compute1-t4 Compute2-b1 Compute3-Fred"
+Compute1-t4 172.20.6.224 plumgrid plumgrid
+Compute2-b1 172.20.6.225 plumgrid plumgrid
