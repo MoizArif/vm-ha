@@ -97,7 +97,7 @@ while true; do
 		new_down=$offline_remotes1
 	        for w in ${name2[*]} # Array name contains fenced compute nodes
 		do
-			log_info "value of w from name: ${w}"
+			#log_info "value of w from name: ${w}"
 		        if [ $offline_remotes1 == $w ]
 		        then
 		                evac=1
@@ -140,7 +140,7 @@ while true; do
 				log_info "Powering off remote node: ${IPMI_RA}"
 				ipmitool -I lanplus -H ${ipaddr} -U ${userid} -P ${passwd} chassis power off
 				log_info "running ipmitool to fence"
-				log_info "Sleeping for 1 second"
+				#log_info "Sleeping for 1 second"
 				sleep 1
 				# Loop that runs for as long as the nova compute service for the recently fenced node is not DOWN
 				while true; do
@@ -156,6 +156,7 @@ while true; do
 						then
 						        log_info "Using N-to-N evacuation model"
 						        log_info "Run evacuation command here without setting any target host"
+						        sleep 10
 							nova --os-username ${username} --os-password ${password} --os-project-name ${tenant_name} --os-auth-url ${auth_url} --os-region-name ${region_name} host-evacuate $IPMI_REMOTE --on-shared-storage
 						fi
 
